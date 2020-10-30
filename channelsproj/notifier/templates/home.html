@@ -14,8 +14,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             const webSocketBridge = new channels.WebSocketBridge();
             webSocketBridge.connect('/ws/');
-            webSocketBridge.listen(function(action, stream) {
-            console.log("RESPONSE:", action, stream);
+            webSocketBridge.listen(function(action) {
+            console.log("RESPONSE:", action);
             });
             /* 16:31 */
             document.ws = webSocketBridge; /* for debugging */
