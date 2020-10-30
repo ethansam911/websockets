@@ -1,0 +1,26 @@
+{% load static %}
+{% comment %} load staticfiles was deprecated {% endcomment %}
+{% comment %} webSocketBridge is deprecated {% endcomment %}
+{% comment %} Make one yourself {% endcomment %}
+
+<html>
+    <head>
+        <title>Notifier</title>
+        <script src="{% static '/channels/js/websocketbridge.js' %}" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>Notifier</h1>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const webSocketBridge = new channels.WebSocketBridge();
+            webSocketBridge.connect('/ws/');
+            webSocketBridge.listen(function(action, stream) {
+            console.log("RESPONSE:", action, stream);
+            });
+            /* 16:31 */
+            document.ws = webSocketBridge; /* for debugging */
+            console.log(document.ws);
+        })
+        </script>
+    </body>
+</html>
