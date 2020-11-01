@@ -120,3 +120,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Channels config
+#Tells us which backend needs to be used for 
+
+CHANNEL_LAYERS  = {
+    "default": {
+        # One of our dependencies
+        "BACKEND": "channels_redis.core.RedisChannelLayer", 
+        "CONFIG": {"hosts": [("localhost", 6379)],
+        }, 
+    },
+}
